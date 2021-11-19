@@ -14,18 +14,17 @@ class AddItem {
     createI = function() {
 
        // I create my mainContainer where all the code will be inside
-      let mainContainer = document.createElement('div');
-      mainContainer.id = 'mainController';
-      boby.append(mainContainer);
+        let mainContainer = document.createElement('div');
+        mainContainer.id = 'mainController';
+        boby.append(mainContainer);
 
-      // I create element i
-      this.container = document.createElement('div');
-      this.container.className = 'icons';
-      let i = document.createElement('i');
+        // I create element i
+        let container = document.createElement('div');
+        container.className = 'icons';
+        let i = document.createElement('i');
 
-
-      mainContainer.append(this.container);
-      this.container.append(this.i)
+        mainContainer.append(container);
+        container.append(i)
     };
 
 }
