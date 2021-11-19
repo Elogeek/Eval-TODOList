@@ -1,9 +1,10 @@
 import 'boxicons';
+import {confetti} from '/assets/confetti.js'
 
 class AddItem {
 
     constructor(tagName,className,type,size) {
-        this.i = tagName;
+        this.tagName = tagName;
         this.className = className;
         this.type = type;
         this.size = size;
@@ -16,7 +17,7 @@ class AddItem {
        // I create my mainContainer where all the code will be inside
         let mainContainer = document.createElement('div');
         mainContainer.id = 'mainController';
-        boby.append(mainContainer);
+        document.boby.append(mainContainer);
 
         // I create element i
         let container = document.createElement('div');
@@ -31,17 +32,15 @@ class AddItem {
 
 export {AddItem};
 
-/**
- * The icons
 
-/* Icon circle v
-let checkIcon = new AddItem("i","check-circle","solid","md");
-checkIcon.createI();
-/* Icon edit
-let editIcon = new AddItem('i','edit',"solid",'md');
-editIcon.createI();
-/* Icon trash
-let trashIcon = new AddItem('i','x-circle',"solid","md");
-trashIcon.createI();
 
-*/
+/* Create btn add text in the list */
+let input = document.createElement('input');
+input.type = 'text';
+input.innerHTML = 'Name...';
+
+let btnAdd = document.createElement('button');
+btnAdd.innerHTML = 'Add Item';
+
+/* si l'ajout est réussi alors les confettis appariassent */
+let partyrainbowConfetti = new confetti();

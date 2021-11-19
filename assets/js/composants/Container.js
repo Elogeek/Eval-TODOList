@@ -14,3 +14,14 @@ class Container {
     }
 
 }
+
+let containerList = document.createElement('div');
+document.body.appendChild(containerList);
+
+let title = document.createElement('h1');
+title.innerHTML = 'to do list';
+title.style.cssText = `
+    textTransform : to uppercase;
+    color : #F5F5F5;
+    fontSize : light;
+    `;
