@@ -33,15 +33,16 @@ class AddItem {
 export {AddItem};
 
 /**
- * Create the icon
- */
+ * The icons
 
-/* Icon circle v */
+/* Icon circle v
 let checkIcon = new AddItem("i","check-circle","solid","md");
 checkIcon.createI();
-/* Icon edit */
+/* Icon edit
 let editIcon = new AddItem('i','edit',"solid",'md');
 editIcon.createI();
-/* Icon trash */
+/* Icon trash
 let trashIcon = new AddItem('i','x-circle',"solid","md");
 trashIcon.createI();
+
+*/
