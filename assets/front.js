@@ -1,8 +1,3 @@
-let validate = document.querySelector('');
-validate.innerHTML = '<ion-icon name="chevron-down-circle-outline"></ion-icon>';
+import "./css/style.css";
+import {Container} from "./js/composants/Container";
 
-let deleteBtn = document.querySelector('');
-deleteBtn.innerHtml = '<ion-icon name="close-circle-outline"></ion-icon>';
-
-   let edit = document.querySelector('');
-   edit.innerHTML = '<ion-icon name="create-outline"></ion-icon>';
