@@ -1,46 +1,34 @@
 import {Icons} from "./Icons";
 
+/**
+ * Create the title of the list
+ */
+
+
 export const TodoItem = {
 
-    init: function(parent) {
-        this.parent = parent;
-        this.container = this.createContainer();
-        this.parent.append(this.container);
+    init: function() {
+        this.titleList();
+        this.iconsList();
     },
-
-    createContainer: function() {
-        let div = document.createElement('div');
-        div.id = "containerIcons";
-        this.parent.append(div);
-        return div;
-    },
-
-    /**
-     * Create a line of the list
-     */
-
-    lineList: function() {
-        let containerList = document.querySelector("#containerList");
-        let line = document.createElement("div");
-        line.className = "lineList";
-
-        this.container.prepend(line);
-        this.container.append(containerList);
-
-        Icons.AddIcon();
-
-    },
-
-    /**
-     * Create the title of the list
-     */
 
     titleList: function(title){
+        let div = document.querySelector("#containerList");
+        let divList = document.createElement("div");
+        divList.className = "divList";
         let titleList = document.createElement("p");
+        titleList.innerHTML = 'hello';
         titleList.className = "titleList"
-        titleList.innerHTML = title;
-        this.container.append(titleList);
+        //titleList.innerHTML = title;
+
+        div.append(divList);
+        divList.append(titleList);
     },
 
+    iconsList: ()=> {
+        new Icons("x-circle");
+        new Icons("edit");
+        new Icons("check-circle");
+    }
 
 }

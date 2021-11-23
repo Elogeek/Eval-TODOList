@@ -19,6 +19,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+#container {
+    box-shadow: 2px -1px 10px 2px #333;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+    align-items: center;
+}
+
 i {
     font-size: 1.5rem;
     margin: .5rem;
@@ -26,37 +35,70 @@ i {
 
 h1 {
     text-align: center;
-    margin: 2rem;
     text-transform : uppercase;
     width: 100%;
     font-size: 4rem;
-    padding: 2rem;
+    position: absolute;
+    top:3rem;
 }
 
-p, h1,#nameList {
+h1,#nameList {
     color: #333333;
     text-align: center;
 }
-/* Font-size font of the input */
+/* Font-size font of the input (Name...) */
 #nameList {
     font-size: 20px;
-    text-align: left;
     padding: 1rem;
+    text-align: left;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
 }
 
+/* Design list */
+#containerList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 5rem;
+    margin-right: 5rem;
+}
+
+.divList {
+    width: 60vh;
+    margin-top: 10rem;
+    margin-bottom:4rem;
+}
+
+.titleList {
+    line-height: 4.5rem;
+    color: #828282;
+    background-color:white;
+    opacity: 0.5;
+    padding: 0.5rem;
+    text-align: left;
+    margin: 1rem;
+}
+
+/* Design btn clear and add Items */
 button,#btnClear {
     border-radius: 1rem;
     text-transform: capitalize;
-    width: 10rem;
     border: 2px solid #95d6b7;
     color: #95d6b7;
     text-align: center;
     padding: 1rem;
-    margin-left: 74rem;
     cursor: pointer;
     background-color: transparent;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+#btnClear {
+    position: relative;
+    margin-top: 3rem;
 }
 
 /* Design containerIcons */
@@ -64,16 +106,6 @@ button,#btnClear {
     width: 90%;
     margin: 3rem auto;
 }
-
-.lineList{
-    display: flex;
-    justify-content: space-between;
-}
-
-.titleList{
-    line-height: 4.5rem;
-}
-
 .check-circle{
     color: #95d6b7
 }
@@ -86,22 +118,14 @@ button,#btnClear {
     color: #dc5350;
 }
 
-#containerList{
-    margin: 5rem auto;
-    width: 35%;
-}
-
-
 #input{
     display: flex;
     justify-content: center;
 }
 
 input[type="text"]{
-    width: 60%;
-    padding: 1rem;
     border-radius: .8rem 0 0 .8rem;
-    margin-left: 22rem;
+    margin-left: 67rem;
 }
 
 input[type="text"]:focus{
@@ -114,19 +138,16 @@ input[type="submit"]{
     width: 8rem;
     color: #95d6b7;
     border-radius: 0 .8rem .8rem 0;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
 }
 
 input[type="submit"], input[type="text"]{
     height: 3.5rem;
     border: 1px solid #95d6b7;
-    text-align: center;
 }
 
 input[type="submit"], #clear, i{
     cursor: pointer;
 }
 
-.lineList{
-    color: #828282;
-    text-decoration: line-through;
-}

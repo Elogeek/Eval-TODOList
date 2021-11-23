@@ -7,5 +7,6 @@ import {TodoItem} from "./js/composants/TodoItem";
 
 
 Container.init(document.body);
-//Icons.init(document.body);
-TodoItem.init(document.body);
+//new Icons().init();
+TodoItem.init();
+

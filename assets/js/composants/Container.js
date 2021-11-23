@@ -15,6 +15,7 @@ export const Container = {
         this.parent = parent;
         this.container = this.createContainer();
         this.createTitle();
+        this.createForm();
         this.createInput();
         this.createListContainer();
         this.createClearBtn();
@@ -22,7 +23,7 @@ export const Container = {
     },
 
     /**
-     * All the elements are placed in this divAll the elements are placed in this div
+     * All the elements are placed in this div
      */
     createContainer: function() {
         let div = document.createElement('div');
@@ -40,6 +41,16 @@ export const Container = {
         this.container.append(title);
     },
 
+    createForm:function() {
+        let divForm = document.createElement('div');
+        divForm.id = 'divForm';
+        let form = document.createElement('form');
+        form.className = 'todoForm';
+
+        this.container.append(divForm);
+        this.container.append(form);
+    },
+
     /* Create input and btn addItem of the list */
     createInput: function () {
         let divInput = document.createElement("div");
@@ -54,7 +65,8 @@ export const Container = {
 
         submit.id = 'addItem';
         submit.type = "submit";
-        submit.value = "Add Item"
+        submit.name ="submit";
+        submit.value = "Add Item";
 
         this.container.append(divInput);
         this.container.append(input);
