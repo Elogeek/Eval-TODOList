@@ -1,27 +1,83 @@
-import {AddItem} from "./AddItem";
+import {Icons} from "./Icons";
+import {TodoItem} from "./TodoItem";
 
-class Container {
+/**
+ * Object Container
+ * @type {{init: Container.init, createInput: Container.createInput, bigDiv: Container.bigDiv, createTitle: Container.createTitle, createClearBtn: Container.createClearBtn, createListContainer: Container.createListContainer}}
+ */
+export const Container = {
 
-    constructor() {
-        this.containerList = containerList;
-        this.tite = title;
-        this.input = input;
-        this.btnAddLineList = btnAddLineList;
-        this.textList = textList;
-        this.icons = new AddItem();
-        this.btnClearList = btnClearList;
+    /**
+     *  Container initialization
+     * @param parent
+     */
+    init: function (parent) {
+        this.parent = parent;
+        this.container = this.createContainer();
+        this.createTitle();
+        this.createInput();
+        this.createListContainer();
+        this.createClearBtn();
+        this.parent.append(this.container);
+    },
 
+    /**
+     * All the elements are placed in this divAll the elements are placed in this div
+     */
+    createContainer: function() {
+        let div = document.createElement('div');
+        div.id = "container";
+        this.parent.append(div);
+        return div;
+    },
+
+    /**
+     * Create the title of the list
+     */
+    createTitle: function () {
+        let title = document.createElement('h1');
+        title.innerHTML = 'to do list';
+        this.container.append(title);
+    },
+
+    /* Create input and btn addItem of the list */
+    createInput: function () {
+        let divInput = document.createElement("div");
+        let input = document.createElement('input');
+        let submit = document.createElement("input");
+
+        divInput.id = "input";
+
+        input.type = 'text';
+        input.placeholder = 'Name...';
+        input.id = "nameList";
+
+        submit.id = 'addItem';
+        submit.type = "submit";
+        submit.value = "Add Item"
+
+        this.container.append(divInput);
+        this.container.append(input);
+        this.container.append(submit);
+    },
+
+    /* Create div for Container */
+    createListContainer: function () {
+        let containerList = document.createElement('div');
+        containerList.id = "containerList";
+        this.container.append(containerList);
+    },
+
+    /* Create btn clear item of the list */
+    createClearBtn: function () {
+        let btn = document.createElement('button');
+        btn.type = "submit";
+        btn.innerHTML = "clear items";
+
+        btn.id = "btnClear";
+        this.container.append(btn);
     }
 
 }
 
-let containerList = document.createElement('div');
-document.body.appendChild(containerList);
 
-let title = document.createElement('h1');
-title.innerHTML = 'to do list';
-title.style.cssText = `
-    textTransform : to uppercase;
-    color : #F5F5F5;
-    fontSize : light;
-    `;

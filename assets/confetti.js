@@ -1,25 +1,24 @@
 /*  rainbowConfetti ===> Object instanciable */
 
-const confetti = function() {
+export const confetti = function() {
 
     /* Draw the canvas */
     let canvas = document.createElement('canvas');
-    canvas.width = 640;
-    canvas.height = 480;
+    canvas.id = 'confetti';
 
     let ctx = canvas.getContext('2d');
     let pieces = [];
-    let numberOfPieces = 60;
+    let numberOfPieces = 50;
     let lastUpdateTime = Date.now();
 
     /* Random Colors of the pieces */
     function rainbowColor() {
-        let letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+        let color = '';
+        for(let i = 0; i < 3; i++) {
+            let random = Math.floor(Math.random() * 256).toString(16);
+            color += (random.length ===  1 ? "0" + random : random);
         }
-        return color;
+        return "#" + color;
     }
 
     /* Refresh the canvas */
@@ -77,5 +76,19 @@ const confetti = function() {
         pieces.push(new Piece(Math.random() * canvas.width, Math.random() * canvas.height));
     }
 
-    update();
+    /**
+     * Refresh the canvas confetti
+     */
+    function init() {
+
+        //Resize canvas
+        canvas.width = 640;
+        canvas.height = 480;
+
+        update();
+        draw()
+    }
+    init();
+
+    document.body.append(canvas);
 };

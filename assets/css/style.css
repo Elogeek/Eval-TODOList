@@ -19,19 +19,114 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-i{
+i {
     font-size: 1.5rem;
     margin: .5rem;
 }
 
-h1{
+h1 {
     text-align: center;
     margin: 2rem;
+    text-transform : uppercase;
+    width: 100%;
+    font-size: 4rem;
+    padding: 2rem;
 }
 
-p, h1{
-
+p, h1,#nameList {
     color: #333333;
+    text-align: center;
+}
+/* Font-size font of the input */
+#nameList {
+    font-size: 20px;
+    text-align: left;
+    padding: 1rem;
+}
+
+button,#btnClear {
+    border-radius: 1rem;
+    text-transform: capitalize;
+    width: 10rem;
+    border: 2px solid #95d6b7;
+    color: #95d6b7;
+    text-align: center;
+    padding: 1rem;
+    margin-left: 74rem;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Design containerIcons */
+#containerIcons {
+    width: 90%;
+    margin: 3rem auto;
+}
+
+.lineList{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleList{
+    line-height: 4.5rem;
+}
+
+.check-circle{
+    color: #95d6b7
+}
+
+.edit{
+    color: #45bfe7;
+}
+
+.x-circle{
+    color: #dc5350;
+}
+
+#containerList{
+    margin: 5rem auto;
+    width: 35%;
 }
 
 
+#input{
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"]{
+    width: 60%;
+    padding: 1rem;
+    border-radius: .8rem 0 0 .8rem;
+    margin-left: 22rem;
+}
+
+input[type="text"]:focus{
+    outline: none;
+    border-color: #95d6b7;
+    box-shadow: 0 0 10px #95d6b7;
+}
+
+input[type="submit"]{
+    width: 8rem;
+    color: #95d6b7;
+    border-radius: 0 .8rem .8rem 0;
+}
+
+input[type="submit"], input[type="text"]{
+    height: 3.5rem;
+    border: 1px solid #95d6b7;
+    text-align: center;
+}
+
+input[type="submit"], #clear, i{
+    cursor: pointer;
+}
+
+.lineList{
+    color: #828282;
+    text-decoration: line-through;
+}
