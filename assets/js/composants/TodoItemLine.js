@@ -5,17 +5,18 @@ import {Icons} from "./Icons";
  */
 
 
-export const TodoItem = {
+export const TodoItemLine = {
 
     init: function() {
         this.titleList();
         this.iconsList();
     },
 
+
     titleList: function(title){
         let div = document.querySelector("#containerList");
         let divList = document.createElement("div");
-        divList.className = "divList";
+        divList.className = "list";
         let titleList = document.createElement("p");
         titleList.innerHTML = 'hello';
         titleList.className = "titleList"
@@ -26,9 +27,7 @@ export const TodoItem = {
     },
 
     iconsList: ()=> {
-        new Icons("x-circle");
-        new Icons("edit");
-        new Icons("check-circle");
+        Icons.init();
     }
 
 }

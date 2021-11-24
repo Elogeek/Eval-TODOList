@@ -1,5 +1,5 @@
 import {Icons} from "./Icons";
-import {TodoItem} from "./TodoItem";
+import {TodoItemLine} from "./TodoItemLine";
 
 /**
  * Object Container
@@ -18,7 +18,7 @@ export const Container = {
         this.createForm();
         this.createInput();
         this.createListContainer();
-        this.createClearBtn();
+        this.createClearBtn() ;
         this.parent.append(this.container);
     },
 
@@ -85,11 +85,14 @@ export const Container = {
         let btn = document.createElement('button');
         btn.type = "submit";
         btn.innerHTML = "clear items";
-
         btn.id = "btnClear";
         this.container.append(btn);
+
+        btn.addEventListener('click',(ev => {
+            let list = document.querySelector('#containerList');
+            list.remove();
+        }));
     }
 
 }
-
 
