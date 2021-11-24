@@ -15,7 +15,10 @@ class GraphDeleteChart {
      * @param container
      */
     init(container) {
-        this.div.style.cssText = "height: 700px; width: 50%; margin: 2rem auto"
+        this.div.style.cssText = `
+        height: 700px;
+         width: 50%;
+          margin: 2rem auto`;
         const myChart = new Chart(this.ctx, {
             type: 'bar',
             data: {

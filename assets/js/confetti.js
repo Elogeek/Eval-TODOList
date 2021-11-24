@@ -2,6 +2,10 @@
 
 export const confetti = function() {
 
+    let container = document.querySelector('#container');
+    let div = document.createElement('div');
+    div.id ="divCanvas";
+
     /* Draw the canvas */
     let canvas = document.createElement('canvas');
     canvas.id = 'confetti';
@@ -80,15 +84,11 @@ export const confetti = function() {
      * Refresh the canvas confetti
      */
     function init() {
-
-        //Resize canvas
-        canvas.width = 640;
-        canvas.height = 480;
-
         update();
-        draw()
+        draw();
     }
     init();
 
-    document.body.append(canvas);
+    container.append(div);
+    div.append(canvas);
 };

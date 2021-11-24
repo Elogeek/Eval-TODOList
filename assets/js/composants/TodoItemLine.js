@@ -12,15 +12,17 @@ export const TodoItemLine = {
         this.iconsList();
     },
 
-
+    /**
+     * Get the input value and display it in #containerList
+     * @param title
+     */
     titleList: function(title){
         let div = document.querySelector("#containerList");
         let divList = document.createElement("div");
         divList.className = "list";
         let titleList = document.createElement("p");
-        titleList.innerHTML = 'hello';
         titleList.className = "titleList"
-        //titleList.innerHTML = title;
+        titleList.innerHTML = title;
 
         div.append(divList);
         divList.append(titleList);

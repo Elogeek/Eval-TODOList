@@ -26,6 +26,7 @@ body {
     padding: 1rem;
     margin: 1rem;
     align-items: center;
+    height:100vh;
 }
 
 i {
@@ -36,7 +37,6 @@ i {
 h1 {
     text-align: center;
     text-transform : uppercase;
-    width: 100%;
     font-size: 4rem;
     position: absolute;
     top:3rem;
@@ -51,7 +51,7 @@ h1,#nameList {
     font-size: 20px;
     padding: 1rem;
     text-align: left;
-    margin-top: 8rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -63,7 +63,9 @@ h1,#nameList {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.divList {
+.list {
+    display: flex;
+    justify-content: space-between;
     width: 60vh;
     margin-top: 10rem;
     margin-bottom:4rem;
@@ -104,37 +106,51 @@ button,#btnClear {
     margin: 3rem auto;
 }
 
-
-#input{
+#input {
     display: flex;
     justify-content: center;
 }
 
-input[type="text"]{
+input[type="text"] {
     border-radius: .8rem 0 0 .8rem;
     margin-left: 67rem;
 }
 
-input[type="text"]:focus{
+input[type="text"]:focus {
     outline: none;
     border-color: #828282;
     box-shadow: 0 0 10px #828282;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     width: 8rem;
     color: #95d6b7;
     border-radius: 0 .8rem .8rem 0;
-    margin-top: 8rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
-input[type="submit"], input[type="text"]{
+input[type="submit"], input[type="text"] {
     height: 3.5rem;
     border: 1px solid #95d6b7;
 }
 
-input[type="submit"], #clear, i{
+input[type="submit"], #clear, i {
     cursor: pointer;
 }
+
+/* Resize canvas confetti */
+#divCanvas {
+    width: 100%;
+    position: absolute;
+    height: 40rem;
+    margin-left: 94rem;
+    overflow: hidden;
+}
+
+#confetti {
+    width: 60%;
+}
+
+
 

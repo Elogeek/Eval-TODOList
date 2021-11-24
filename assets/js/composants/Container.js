@@ -1,5 +1,5 @@
-import {Icons} from "./Icons";
 import {TodoItemLine} from "./TodoItemLine";
+import {confetti} from "../confetti";
 
 /**
  * Object Container
@@ -18,14 +18,14 @@ export const Container = {
         this.createForm();
         this.createInput();
         this.createListContainer();
-        this.createClearBtn() ;
+        this.createClearBtn();
         this.parent.append(this.container);
     },
 
     /**
      * All the elements are placed in this div
      */
-    createContainer: function() {
+    createContainer: function () {
         let div = document.createElement('div');
         div.id = "container";
         this.parent.append(div);
@@ -41,7 +41,7 @@ export const Container = {
         this.container.append(title);
     },
 
-    createForm:function() {
+    createForm: function () {
         let divForm = document.createElement('div');
         divForm.id = 'divForm';
         let form = document.createElement('form');
@@ -65,12 +65,27 @@ export const Container = {
 
         submit.id = 'addItem';
         submit.type = "submit";
-        submit.name ="submit";
+        submit.name = "submit";
         submit.value = "Add Item";
 
         this.container.append(divInput);
         this.container.append(input);
         this.container.append(submit);
+
+        submit.addEventListener('click', ((ev, title) => {
+            TodoItemLine.titleList(title);
+
+            function getValueInput(title) {
+                title.innerHTML = document.querySelector('#nameList').value;
+                let titleList = document.querySelector('.titleList');
+                titleList.innerHTML = title;
+                return title;
+            }
+
+            getValueInput(title);
+
+            TodoItemLine.init();
+        }))
     },
 
     /* Create div for Container */
@@ -88,11 +103,46 @@ export const Container = {
         btn.id = "btnClear";
         this.container.append(btn);
 
-        btn.addEventListener('click',(ev => {
+        /**
+         * when clicking on the button the list is deleted
+         * and the confetti animation starts
+         * and ends when the let count variable is at o
+         */
+        let count = 10;
+        btn.addEventListener('click', (ev => {
             let list = document.querySelector('#containerList');
             list.remove();
+            new  confetti();
+
+            let duration = 5 + 'seconds';
+
+            let time = (function() {
+                if (count >= 0) {
+                    duration--;
+                    count--;
+                    console.log("l'animation se termine dans " + count + 'seconds'+ "!");
+                }
+                if(count === 0 && duration === 0 + 'seconds') {
+                    btn.addEventListener("mouseleave",stopAnimation);
+                    console.log("voilà j'ai fini mon cirque " + count + 'seconds'+ "!");
+                }
+            });
         }));
+
+        /**
+         *  Delete animation
+         * @type {Element}
+         */
+        let divCanvas = document.querySelector('#divCanvas');
+
+        function stopAnimation() {
+            divCanvas.remove();
+        }
+
+
     }
 
 }
+
+
 
