@@ -1,5 +1,4 @@
 import "../css/style.css";
-
 import {Icons} from "./composants/Icons";
 import {Container} from "./composants/Container";
 import {TodoItemLine} from "./composants/TodoItemLine";

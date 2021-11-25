@@ -9,7 +9,6 @@ export const TodoItemLine = {
 
     init: function() {
         this.titleList();
-        this.iconsList();
     },
 
     /**
@@ -17,21 +16,28 @@ export const TodoItemLine = {
      */
     titleList: function(){
         let div = document.querySelector("#containerList");
-        let divList = document.createElement("div");
-        divList.className = "list";
-        let titleList = document.createElement("p");
-        titleList.className = "titleList"
+        let todos = localStorage.getItem('todos');
+        if(!todos) {
+            todos = [];
+        }
+        else {
+            todos = JSON.parse(todos);
+        }
 
-        let result = localStorage.getItem('vInput');
-        console.log("la valeur de l'input est : " + result);
-        titleList.innerHTML = result;
+        for(const todo of todos) {
+            let divList = document.createElement("div");
+            divList.className = "list";
 
-        div.append(divList);
-        divList.append(titleList);
+            let titleList = document.createElement("p");
+            titleList.className = "titleList"
+            titleList.innerHTML = todo;
+
+            new Icons(divList);
+
+            div.append(divList);
+            divList.append(titleList);
+        }
     },
 
-    iconsList: ()=> {
-        Icons.init();
-    }
 
 }

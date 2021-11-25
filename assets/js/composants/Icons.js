@@ -1,62 +1,62 @@
-import 'boxicons';
+//import 'boxicons';
 import {TodoItemLine} from "./TodoItemLine";
 import {GraphDeleteChart} from "./GraphDeleteChart";
 
-export  const Icons = {
+export class Icons {
 
      /*  Container initialization
      */
-    init: function () {
+    constructor(todoElement) {
+        this.todoElement = todoElement;
         this.createContainer();
         this.createIcons();
-        this.update();
+        //this.update();
         this.check();
-        this.delete();
-    },
+        //this.delete();
+    };
 
     /**
      *  creates an <i> and place it in the div.icons
      */
-    createContainer: function(className) {
-
-        let line = document.querySelector('.list');
+    createContainer() {
         let container = document.createElement('div');
         container.className = 'icons';
-        line.append(container);
+        this.todoElement.append(container);
 
-    },
+    };
 
     /**
-     * creata icons
+     * create icons
      */
-    createIcons: function(){
+    createIcons(){
         let divIcons = document.querySelector('.icons');
 
         /**
          * Create div for i
          */
         let divCheck = document.createElement('div');
-        divCheck.className = 'divCheck';
         let divTrash = document.createElement('div');
-        divTrash.className = 'divTrash';
         let divUpdate = document.createElement('div');
+
+        divCheck.className = 'divCheck';
+        divTrash.className = 'divTrash';
         divUpdate.className = 'divUpdate';
 
         /**
          * Place i in the div
          */
         let iTrash = document.createElement('i');
-        iTrash.className ='x-circle';
-        iTrash.type = "solid";
-        iTrash.style.color = '#dc5350;'
+        iTrash.className ='far fa-times-circle';
+        iTrash.style.color = '#dc5350';
+
         let iUpdate = document.createElement('i');
-        iUpdate.className ='edit';
-        iUpdate.type = "solid";
-        iUpdate.style.color = '#45bfe7;'
+        iUpdate.className ='far fa-edit';
+        iUpdate.style.color = '#45bfe7';
+
         let iCheck = document.createElement('i');
-        iCheck.className ='check-circle';
-        iCheck.type = "solid";
-        iCheck.style.color ='color: #95d6b7';
+        iCheck.className = 'far fa-check-circle';
+        iCheck.id = 'iCheck';
+        iCheck.style.color = '#95d6b7';
 
         divIcons.append(divCheck);
         divIcons.append(divTrash);
@@ -65,66 +65,43 @@ export  const Icons = {
         divCheck.appendChild(iCheck);
         divTrash.appendChild(iTrash);
         divUpdate.appendChild(iUpdate);
-    },
+    };
 
     /**
      *  Actions btns (trash,edit,update)
      */
-    check:()=>{
-        let checkI = document.querySelector('.check-circle');
+    check() {
+        let checkI = document.querySelectorAll('#iCheck');
         checkI.addEventListener('click',(evt => {
-            let item = evt;
-            for(let check in localStorage) {
-                if(localStorage.getItem(check) === item.innerHTML){
-                    localStorage.setItem(check,item.innerHTML + " : ");
-                }
+            let input = document.querySelector('.titleList').values();
+            localStorage.setItem('title-checked',input);
+            let resultTitle = localStorage.getItem('title-checked');
+            console.log("la valeur est " + resultTitle);
+            if(input === resultTitle) {
+                console.log("c'est pareil");
+            }
+            else {
+                console.log("merde");
             }
         }))
 
-    },
+    };
 
-    update:()=>{
-        let updateI = document.querySelector(".edit");
+  /*  update:()=>{
+        let updateI = document.querySelectorAll(".divUpdate");
         updateI.addEventListener('click',(evt => {
-            let titleList = evt;
 
-            let input = document.createElement("input");
-            input.type = "text";
-            input.value = titleList.innerHTML;
-            input.style.width = "85%";
+        });
 
-            titleList.remove();
-
-            input.addEventListener("keypress", (evt)=>{
-                if (evt.key === "checked"){
-                    if (input.value){
-                        TodoItemLine.titleList(input.value, evt.target.parentNode)
-                        for (let edit in localStorage){
-                            if (localStorage.getItem(edit) === titleList.innerHTML){
-                                localStorage.setItem(edit, input.value);
-                            }
-                        }
-                        input.remove();
-                    }
-                }
-            })
-        }))
     },
     delete:()=>{
-        let trashI = document.querySelector('.x-circle');
+        let trashI = document.querySelector('.divTrash');
         trashI.addEventListener("click",(evt => {
-            let item = evt.innerHTML;
-            for (let trash in localStorage){
-                if (localStorage.getItem(trash) === item){
-                    localStorage.setItem(trash, "deleteItem");
-                }
-            }
-            evt.remove();
-            new GraphDeleteChart();
 
+            new GraphDeleteChart();
         }))
     },
-
+*/
 
 }
 

@@ -48,7 +48,7 @@ export const Container = {
         form.className = 'todoForm';
 
         this.container.append(divForm);
-        this.container.append(form);
+        divForm.append(form);
     },
 
     /* Create input and btn addItem of the list */
@@ -56,8 +56,9 @@ export const Container = {
         let divInput = document.createElement("div");
         let input = document.createElement('input');
         let submit = document.createElement("input");
+        let f = document.querySelector(".todoForm");
 
-        divInput.id = "input";
+        divInput.id = "divInput";
 
         input.type = 'text';
         input.placeholder = 'Name...';
@@ -65,24 +66,24 @@ export const Container = {
 
         submit.id = 'addItem';
         submit.type = "submit";
-        submit.onclick ="getValueInput";
         submit.name = "submit";
         submit.value = "Add Item";
 
-        this.container.append(divInput);
-        this.container.append(input);
-        this.container.append(submit);
+        f.append(divInput);
+        divInput.append(input);
+        divInput.append(submit);
 
-        /**
-         * Stock value input in the localstorage
-         */
-        function getValueInput() {
-            let vInput = document.querySelector('#nameList').value;
-            localStorage.setItem('vInput',vInput);
-        }
-
-        submit.addEventListener('click', ((ev, title) => {
-            getValueInput();
+        submit.addEventListener('click', ((ev) => {
+            let vInput = input.value;
+            let todos = localStorage.getItem('todos');
+            if(!todos) {
+                todos = [];
+            }
+            else {
+                todos = JSON.parse(todos);
+            }
+            todos.push(vInput);
+            localStorage.setItem('todos', JSON.stringify(todos));
         }));
 
     },
