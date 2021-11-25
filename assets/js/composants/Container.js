@@ -106,39 +106,42 @@ export const Container = {
         /**
          * when clicking on the button the list is deleted
          * and the confetti animation starts
-         * and ends when the let count variable is at o
          */
-        let count = 10;
+        let count = 0;
+        let duration ;
+        let timer = 0;
+
+        function timedCount() {
+            count = count + 1;
+            duration = setTimeout(timedCount, 1000);
+        }
+        function stopCount() {
+            clearTimeout(timer);
+            timer = 10;
+        }
+
         btn.addEventListener('click', (ev => {
+
             let list = document.querySelector('#containerList');
             list.remove();
-            new  confetti();
 
-            let duration = 5 + 'seconds';
-
-            let time = (function() {
-                if (count >= 0) {
-                    duration--;
-                    count--;
-                    console.log("l'animation se termine dans " + count + 'seconds'+ "!");
-                }
-                if(count === 0 && duration === 0 + 'seconds') {
-                    btn.addEventListener("mouseleave",stopAnimation);
-                    console.log("voilà j'ai fini mon cirque " + count + 'seconds'+ "!");
-                }
-            });
+            new confetti();
+            if (!timer) {
+                timer = 1;
+                timedCount();
+            }
+            timedCount();
         }));
 
         /**
-         *  Delete animation
+         *  Animation ends when we dbclick on the btn
          * @type {Element}
          */
-        let divCanvas = document.querySelector('#divCanvas');
-
-        function stopAnimation() {
-            divCanvas.remove();
-        }
-
+         btn.addEventListener("dblclick",()=> {
+                let divCanvas = document.querySelector('#divCanvas');
+                stopCount();
+                divCanvas.remove();
+         });
 
     }
 

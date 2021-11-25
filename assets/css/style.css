@@ -141,16 +141,12 @@ input[type="submit"], #clear, i {
 
 /* Resize canvas confetti */
 #divCanvas {
-    width: 100%;
-    position: absolute;
-    height: 40rem;
-    margin-left: 94rem;
+    display: block;
+    height: 25rem;
+    margin-top: 55rem;
     overflow: hidden;
 }
 
-#confetti {
-    width: 60%;
-}
 
 
 
