@@ -27,7 +27,7 @@ export  const Icons = {
     },
 
     /**
-     * creta icons
+     * creata icons
      */
     createIcons: function(){
         let divIcons = document.querySelector('.icons');
@@ -47,12 +47,15 @@ export  const Icons = {
          */
         let iTrash = document.createElement('i');
         iTrash.className ='x-circle';
+        iTrash.type = "solid";
         iTrash.style.color = '#dc5350;'
         let iUpdate = document.createElement('i');
         iUpdate.className ='edit';
+        iUpdate.type = "solid";
         iUpdate.style.color = '#45bfe7;'
         let iCheck = document.createElement('i');
         iCheck.className ='check-circle';
+        iCheck.type = "solid";
         iCheck.style.color ='color: #95d6b7';
 
         divIcons.append(divCheck);
@@ -64,14 +67,16 @@ export  const Icons = {
         divUpdate.appendChild(iUpdate);
     },
 
-    /* Actions btns (trash,edit,update) */
+    /**
+     *  Actions btns (trash,edit,update)
+     */
     check:()=>{
-        let checkI = document.querySelector('.divCheck');
+        let checkI = document.querySelector('.check-circle');
         checkI.addEventListener('click',(evt => {
             let item = evt;
-            for(let key in localStorage) {
-                if(localStorage.getItem(key) === item.innerHTML){
-                    localStorage.setItem(key,item.innerHTML + " : ");
+            for(let check in localStorage) {
+                if(localStorage.getItem(check) === item.innerHTML){
+                    localStorage.setItem(check,item.innerHTML + " : ");
                 }
             }
         }))
@@ -79,24 +84,24 @@ export  const Icons = {
     },
 
     update:()=>{
-        let updateI = document.querySelector(".divUpdate");
+        let updateI = document.querySelector(".edit");
         updateI.addEventListener('click',(evt => {
-            let titleLine = evt;
+            let titleList = evt;
 
             let input = document.createElement("input");
             input.type = "text";
-            input.value = titleLine.innerHTML;
+            input.value = titleList.innerHTML;
             input.style.width = "85%";
 
-            titleLine.remove();
+            titleList.remove();
 
             input.addEventListener("keypress", (evt)=>{
                 if (evt.key === "checked"){
                     if (input.value){
                         TodoItemLine.titleList(input.value, evt.target.parentNode)
-                        for (let key in localStorage){
-                            if (localStorage.getItem(key) === titleLine.innerHTML){
-                                localStorage.setItem(key, input.value);
+                        for (let edit in localStorage){
+                            if (localStorage.getItem(edit) === titleList.innerHTML){
+                                localStorage.setItem(edit, input.value);
                             }
                         }
                         input.remove();
@@ -106,12 +111,12 @@ export  const Icons = {
         }))
     },
     delete:()=>{
-        let trashI = document.querySelector('.divTrash');
+        let trashI = document.querySelector('.x-circle');
         trashI.addEventListener("click",(evt => {
             let item = evt.innerHTML;
-            for (let key in localStorage){
-                if (localStorage.getItem(key) === item){
-                    localStorage.setItem(key, "deleteItem");
+            for (let trash in localStorage){
+                if (localStorage.getItem(trash) === item){
+                    localStorage.setItem(trash, "deleteItem");
                 }
             }
             evt.remove();

@@ -21,6 +21,7 @@ export const TodoItemLine = {
         divList.className = "list";
         let titleList = document.createElement("p");
         titleList.className = "titleList"
+
         let result = localStorage.getItem('vInput');
         console.log("la valeur de l'input est : " + result);
         titleList.innerHTML = result;

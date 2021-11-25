@@ -122,6 +122,9 @@ export const Container = {
         btn.addEventListener('click', (ev => {
 
             let list = document.querySelector('#containerList');
+            let titleStore = document.querySelectorAll('.titleList').values();
+            localStorage.setItem('itemList',titleStore);
+            localStorage.clear();
             list.remove();
 
             new confetti();

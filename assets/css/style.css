@@ -29,11 +29,6 @@ body {
     height:100vh;
 }
 
-i {
-    font-size: 1.5rem;
-    margin: .5rem;
-}
-
 h1 {
     text-align: center;
     text-transform : uppercase;
@@ -46,6 +41,7 @@ h1,#nameList {
     color: #333333;
     text-align: center;
 }
+
 /* Font-size font of the input (Name...) */
 #nameList {
     font-size: 20px;
@@ -61,6 +57,10 @@ h1,#nameList {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);
+    width: 68vh;
+    top: 10rem;
+    position: relative;
+    right: 39rem;
 }
 
 .list {
@@ -69,30 +69,51 @@ h1,#nameList {
     width: 60vh;
     margin-top: 10rem;
     margin-bottom:4rem;
+    background-color: #ffffff;
 }
 
 .titleList {
-    line-height: 4.5rem;
     color: #828282;
-    background-color:white;
-    opacity: 0.5;
     padding: 0.5rem;
     text-align: left;
     margin: 1rem;
 }
 
+.icons, .titleList {
+    line-height: 4.5rem;
+    background-color: #ffffff;
+    opacity: 0.5;
+}
+
+/* Desing icons */
+.icons {
+    display: flex;
+}
+
+.icons div {
+    padding: 0.5rem;
+}
+.icons i {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
 /* Design btn clear and add Items */
-button,#btnClear {
-    border-radius: 1rem;
-    text-transform: capitalize;
-    border: 2px solid #95d6b7;
-    color: #95d6b7;
-    text-align: center;
-    padding: 1rem;
-    cursor: pointer;
+#btnClear {
     background-color: transparent;
+    border: 2px solid #95d6b7;
+    border-radius: 1rem;
+    color: #95d6b7;
+    cursor: pointer;
     display: flex;
     justify-content: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    position: relative;
+    text-align: center;
+    text-transform: capitalize;
+    top: 32rem;
+    right: 68rem;
 }
 
 #btnClear {
@@ -141,12 +162,11 @@ input[type="submit"], #clear, i {
 
 /* Resize canvas confetti */
 #divCanvas {
-    display: block;
+    float: left;
+    top: 1rem;
     height: 25rem;
-    margin-top: 55rem;
     overflow: hidden;
+    bottom: 22rem;
+    position: relative;
 }
-
-
-
 
