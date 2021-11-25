@@ -65,6 +65,7 @@ export const Container = {
 
         submit.id = 'addItem';
         submit.type = "submit";
+        submit.onclick ="getValueInput";
         submit.name = "submit";
         submit.value = "Add Item";
 
@@ -72,20 +73,18 @@ export const Container = {
         this.container.append(input);
         this.container.append(submit);
 
+        /**
+         * Stock value input in the localstorage
+         */
+        function getValueInput() {
+            let vInput = document.querySelector('#nameList').value;
+            localStorage.setItem('vInput',vInput);
+        }
+
         submit.addEventListener('click', ((ev, title) => {
-            TodoItemLine.titleList(title);
+            getValueInput();
+        }));
 
-            function getValueInput(title) {
-                title.innerHTML = document.querySelector('#nameList').value;
-                let titleList = document.querySelector('.titleList');
-                titleList.innerHTML = title;
-                return title;
-            }
-
-            getValueInput(title);
-
-            TodoItemLine.init();
-        }))
     },
 
     /* Create div for Container */

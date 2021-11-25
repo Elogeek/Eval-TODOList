@@ -115,7 +115,7 @@ export  const Icons = {
                 }
             }
             evt.remove();
-            let graphTrash = new GraphDeleteChart();
+            new GraphDeleteChart();
 
         }))
     },

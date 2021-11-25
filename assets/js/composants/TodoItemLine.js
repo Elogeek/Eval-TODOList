@@ -14,15 +14,16 @@ export const TodoItemLine = {
 
     /**
      * Get the input value and display it in #containerList
-     * @param title
      */
-    titleList: function(title){
+    titleList: function(){
         let div = document.querySelector("#containerList");
         let divList = document.createElement("div");
         divList.className = "list";
         let titleList = document.createElement("p");
         titleList.className = "titleList"
-        titleList.innerHTML = title;
+        let result = localStorage.getItem('vInput');
+        console.log("la valeur de l'input est : " + result);
+        titleList.innerHTML = result;
 
         div.append(divList);
         divList.append(titleList);
