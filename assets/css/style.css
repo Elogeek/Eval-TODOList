@@ -52,16 +52,14 @@ h1,#nameList {
 /* Design list */
 #containerList {
     background-color: rgba(255, 255, 255, 0.1);
-    width: 68vh;
-    display: flex;
-    flex-direction: column;
-    margin-left: 5rem;
+    width: 68vw;
     margin-top: 2rem;
 }
 
 .list {
-    display: block;
-    width: 60vh;
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
     margin-bottom: 1rem;
     background-color: #ffffff;
 }
@@ -73,26 +71,25 @@ h1,#nameList {
     margin: 1rem;
 }
 
-.icons, .titleList {
-    line-height: 4.5rem;
+.list div {
     background-color: #ffffff;
     opacity: 0.5;
 }
 
 /* Desing icons */
 .icons {
-    display: flex;
+    padding: 1rem;
 }
 
-.icons div {
-    padding: 0.5rem;
-}
-.icons i {
-    font-size: 1.5rem;
+.list i {
+    font-size: 2rem;
     margin: .5rem;
 }
+.list i:hover {
+    box-shadow: 0 0 10px #828282;
+}
 
-/* Design btn clear and add Items */
+/* Design btns */
 #btnClear {
     background-color: transparent;
     border: 2px solid #95d6b7;
@@ -102,12 +99,6 @@ h1,#nameList {
     padding: 1rem;
     text-align: center;
     text-transform: capitalize;
-}
-
-
-/* Design containerIcons */
-#containerIcons {
-    margin: 3rem auto;
 }
 
 input[type="text"] {

@@ -1,6 +1,3 @@
-//import 'boxicons';
-import {TodoItemLine} from "./TodoItemLine";
-import {GraphDeleteChart} from "./GraphDeleteChart";
 
 export class Icons {
 
@@ -8,100 +5,118 @@ export class Icons {
      */
     constructor(todoElement) {
         this.todoElement = todoElement;
-        this.createContainer();
         this.createIcons();
-        //this.update();
-        this.check();
-        //this.delete();
-    };
-
-    /**
-     *  creates an <i> and place it in the div.icons
-     */
-    createContainer() {
-        let container = document.createElement('div');
-        container.className = 'icons';
-        this.todoElement.append(container);
-
     };
 
     /**
      * create icons
      */
-    createIcons(){
-        let divIcons = document.querySelector('.icons');
+    createIcons() {
 
         /**
          * Create div for i
          */
-        let divCheck = document.createElement('div');
-        let divTrash = document.createElement('div');
-        let divUpdate = document.createElement('div');
+        let divIcons = document.createElement('div');
+        divIcons.className = 'icons';
 
-        divCheck.className = 'divCheck';
-        divTrash.className = 'divTrash';
-        divUpdate.className = 'divUpdate';
 
         /**
-         * Place i in the div
+         * Place i in the div .icons
          */
         let iTrash = document.createElement('i');
         iTrash.className ='far fa-times-circle';
         iTrash.style.color = '#dc5350';
+        iTrash.addEventListener('click', this.delete);
 
         let iUpdate = document.createElement('i');
         iUpdate.className ='far fa-edit';
         iUpdate.style.color = '#45bfe7';
+        iUpdate.addEventListener('click',this.update);
 
         let iCheck = document.createElement('i');
         iCheck.className = 'far fa-check-circle';
-        iCheck.id = 'iCheck';
         iCheck.style.color = '#95d6b7';
+        iCheck.addEventListener('click',this.check);
 
-        divIcons.append(divCheck);
-        divIcons.append(divTrash);
-        divIcons.append(divUpdate);
+        this.todoElement.append(divIcons);
 
-        divCheck.appendChild(iCheck);
-        divTrash.appendChild(iTrash);
-        divUpdate.appendChild(iUpdate);
+
+        divIcons.appendChild(iCheck);
+        divIcons.appendChild(iUpdate);
+        divIcons.appendChild(iTrash);
     };
 
     /**
      *  Actions btns (trash,edit,update)
      */
-    check() {
-        let checkI = document.querySelectorAll('#iCheck');
-        checkI.addEventListener('click',(evt => {
-            let input = document.querySelector('.titleList').values();
-            localStorage.setItem('title-checked',input);
-            let resultTitle = localStorage.getItem('title-checked');
-            console.log("la valeur est " + resultTitle);
-            if(input === resultTitle) {
-                console.log("c'est pareil");
-            }
-            else {
-                console.log("merde");
-            }
-        }))
+   check(event) {
+        let checkk = localStorage.getItem('checked');
 
+        if(!checkk) {
+            checkk = [];
+        }
+        else {
+            checkk = JSON.parse(checkk);
+        }
+
+        for(const ck of checkk) {
+
+            let title = document.getElementById('new title').value;
+            title += localStorage.setItem('updated',title);
+
+        }
+   };
+
+   update(event){
+      let update = localStorage.getItem('updated');
+      if(!update) {
+          update = [];
+      }
+      else {
+          update = JSON.parse(update);
+      }
+
+      for(const up of update) {
+          let divInput = document.createElement('div');
+          let input = document.createElement('input');
+          let btn = document.createElement('button');
+
+          divInput.className = "new input";
+          input.id = "new title";
+          btn.value = 'OK';
+
+          this.todoElement.append(divInput);
+          divInput.append(input);
+          divInput.append(btn);
+
+          let valueI = input.value;
+
+          update.push(valueI);
+          localStorage.setItem('updated', JSON.stringify(update));
+      }
+   };
+
+    delete(event) {
+        let deleteCount = localStorage.getItem('deleted');
+        if(!deleteCount)
+            deleteCount = 1;
+        else
+            deleteCount = parseInt(deleteCount) + 1;
+
+       localStorage.setItem('deleted', deleteCount.toString());
+
+        let todos = localStorage.getItem('todos');
+        if(!todos) {
+            todos = [];
+        }
+        else {
+            todos = JSON.parse(todos);
+        }
+
+         event.parentElement.nodeName.remove();
+
+        localStorage.setItem('todos', todos);
     };
-
-  /*  update:()=>{
-        let updateI = document.querySelectorAll(".divUpdate");
-        updateI.addEventListener('click',(evt => {
-
-        });
-
-    },
-    delete:()=>{
-        let trashI = document.querySelector('.divTrash');
-        trashI.addEventListener("click",(evt => {
-
-            new GraphDeleteChart();
-        }))
-    },
-*/
 
 }
 

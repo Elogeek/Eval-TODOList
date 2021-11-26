@@ -5,16 +5,16 @@ class GraphDeleteChart {
     /**
      * Constructor
      */
-    constructor() {
+    constructor(todoElement) {
+        this.todoElement = todoElement;
         this.ctx = document.createElement("canvas");
         this.div = document.createElement("div");
     }
 
     /**
      * Init the chart
-     * @param container
      */
-    init(container) {
+    init() {
         this.div.style.cssText = `
             height: 700px;
             width: 50%;
@@ -26,7 +26,7 @@ class GraphDeleteChart {
                 labels: ["Lien delete"],
                 datasets: [{
                     label: 'Nombre de delete',
-                    data: [parseInt(localStorage.getItem("deleteItem"))],
+                    data: [parseInt(localStorage.getItem("deleted"))],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -55,7 +55,7 @@ class GraphDeleteChart {
             }
         });
         this.div.appendChild(this.ctx)
-        container.appendChild(this.div);
+        this.todoElement.appendChild(this.div);
     }
 }
 

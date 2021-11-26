@@ -35,7 +35,7 @@ export const TodoItemLine = {
             new Icons(divList);
 
             div.append(divList);
-            divList.append(titleList);
+            divList.prepend(titleList);
         }
     },
 
