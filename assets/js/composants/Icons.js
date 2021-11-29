@@ -1,3 +1,4 @@
+import {TodoItemLine} from "./TodoItemLine";
 
 export class Icons {
 
@@ -26,17 +27,17 @@ export class Icons {
         let iTrash = document.createElement('i');
         iTrash.className ='far fa-times-circle';
         iTrash.style.color = '#dc5350';
-        iTrash.addEventListener('click', this.delete);
+        iTrash.addEventListener('click', ()=> this.delete());
 
         let iUpdate = document.createElement('i');
         iUpdate.className ='far fa-edit';
         iUpdate.style.color = '#45bfe7';
-        iUpdate.addEventListener('click',this.update);
+        iUpdate.addEventListener('click',() => this.update());
 
         let iCheck = document.createElement('i');
         iCheck.className = 'far fa-check-circle';
         iCheck.style.color = '#95d6b7';
-        iCheck.addEventListener('click',this.check);
+        iCheck.addEventListener('click',()  => this.check());
 
         this.todoElement.append(divIcons);
 
@@ -50,50 +51,37 @@ export class Icons {
      *  Actions btns (trash,edit,update)
      */
    check(event) {
-        let checkk = localStorage.getItem('checked');
-
-        if(!checkk) {
-            checkk = [];
-        }
-        else {
-            checkk = JSON.parse(checkk);
-        }
-
-        for(const ck of checkk) {
-
-            let title = document.getElementById('new title').value;
-            title += localStorage.setItem('updated',title);
-
-        }
+        this.todoElement.querySelector('.titleList').style.textDecoration = 'line-through lime 4px';
    };
 
    update(event){
-      let update = localStorage.getItem('updated');
-      if(!update) {
-          update = [];
-      }
-      else {
-          update = JSON.parse(update);
-      }
+       let input = document.createElement('input');
 
-      for(const up of update) {
-          let divInput = document.createElement('div');
-          let input = document.createElement('input');
-          let btn = document.createElement('button');
+       /** Div for update input **/
+       let updateList = document.createElement('div');
+       updateList.className = 'updateList';
+       let container = document.querySelector('#containerList');
+       container.appendChild(updateList);
+       updateList.appendChild(input);
 
-          divInput.className = "new input";
-          input.id = "new title";
-          btn.value = 'OK';
+       let todos = localStorage.getItem('todos');
 
-          this.todoElement.append(divInput);
-          divInput.append(input);
-          divInput.append(btn);
+       input.addEventListener('keypress', (event) => {
+            if(event.key === 'Enter') {
+                let valueNewInput = input.value;
+                localStorage.setItem('todos',valueNewInput);
+                console.log('le nouveau titre est : ' + valueNewInput);
+                let title = document.querySelector('.titleList');
+                title.innerHTML = input.value;
+                return title;
+            }
 
-          let valueI = input.value;
+           todos.push(input.value);
+           localStorage.setItem('updated', JSON.stringify(todos));
+       })
 
-          update.push(valueI);
-          localStorage.setItem('updated', JSON.stringify(update));
-      }
+
+
    };
 
     delete(event) {
@@ -112,9 +100,7 @@ export class Icons {
         else {
             todos = JSON.parse(todos);
         }
-
-         event.parentElement.nodeName.remove();
-
+        this.todoElement.splice(0,deleteCount);
         localStorage.setItem('todos', todos);
     };
 
