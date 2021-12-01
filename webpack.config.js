@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     const config = argv.mode === 'development' ? devConfig() : prodConfig();
     return {
         entry: {
-            front: "./assets/js/front.js",
+            front: "./assets/js/front.mjs",
         },
 
         output: {
@@ -73,13 +73,14 @@ function prodConfig() {
                     use: [MiniCssExtractPlugin.loader, "css-loader"]
                 },
 
-                // Configuration de babel pour les navigateurs plus anciens.
+                // Config old navigator.
                 {
-                    test: /\.js$/,
+                    test: /\.(m)js$/,
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-proposal-object-rest-spread']
+                        plugins: ['@babel/plugin-proposal-object-rest-spread'],
+                        exclude: ['/assets/specs']
                     }
                 },
             ]

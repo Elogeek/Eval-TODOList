@@ -1,6 +1,6 @@
-/*  rainbowConfetti ===> Object instanciable */
+/* Confetti ===> Object instanciable */
 
-export const confetti = function() {
+export const Confetti = function() {
 
     let container = document.querySelector('#container');
     let div = document.createElement('div');

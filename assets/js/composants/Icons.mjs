@@ -1,4 +1,4 @@
-import {TodoItemLine} from "./TodoItemLine";
+import {TodoItemLine} from "./TodoItemLine.mjs";
 
 export class Icons {
 
@@ -80,7 +80,12 @@ export class Icons {
            localStorage.setItem('updated', JSON.stringify(todos));
        })
 
-
+       /**
+        * Hides the input once the mouse has left it
+        **/
+       input.addEventListener('mouseout',(event) => {
+           input.style.display = 'none';
+       });
 
    };
 
@@ -100,8 +105,9 @@ export class Icons {
         else {
             todos = JSON.parse(todos);
         }
-        this.todoElement.splice(0,deleteCount);
-        localStorage.setItem('todos', todos);
+
+        localStorage.setItem('todos', todos.splice(1,todos.length));
+        this.todoElement.remove();
     };
 
 }

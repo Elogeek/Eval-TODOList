@@ -123,6 +123,16 @@ h1,#nameList {
     text-transform: capitalize;
 }
 
+#buttonGraph {
+    background-color: transparent;
+    border: 2px solid #95d6b7;
+    border-radius: 1rem;
+    color: #95d6b7;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
 input[type="text"] {
     border-radius: .8rem 0 0 .8rem;
 }
@@ -153,10 +163,87 @@ input[type="submit"], #btnClear, i {
 /* Resize canvas confetti */
 #divCanvas {
     float: left;
-    top: 1rem;
+    margin-top: 1rem;
     height: 25rem;
     overflow: hidden;
-    bottom: 22rem;
-    position: relative;
 }
 
+/** Design graph **/
+body> #divGraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 29rem;
+    margin-left: 26rem;
+    margin-top: 10rem;
+    width: 59%;
+}
+/** Responsive mode **/
+@media screen and (max-width: 1066px) {
+
+    #divGraph {
+        margin-top: 6rem;
+        margin-left: 22rem;
+    }
+
+}
+
+@media screen and (max-width: 295px) {
+
+    body> #divGraph {
+        margin-left: 3rem;
+        margin-top: -7rem;
+    }
+
+    #divCanvas {
+        height: 9rem;
+    }
+
+}
+
+@media screen and (max-width: 410px) {
+
+        #nameList {
+            font-size: 12px;
+        }
+
+        input[type = submit] {
+            width: 6.5rem;
+        }
+
+        .list {
+            width: 65vw;
+        }
+
+        #btnClear,#buttonGraph {
+            margin-top: 2.5rem;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        body> #divGraph {
+            margin-left: 6rem;
+            margin-top: -4rem;
+        }
+
+        #divCanvas {
+            height: 13rem;
+        }
+}
+
+
+@media screen and (max-width: 240px) {
+
+    #nameList {
+        font-size: 9px;
+        font-weight: bold;
+    }
+
+    input[type = submit] {
+        width: 6rem;
+    }
+
+    #divGraph {
+        display: none;
+    }
+}

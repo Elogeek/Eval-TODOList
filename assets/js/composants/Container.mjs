@@ -1,9 +1,9 @@
 
-import {confetti} from "../confetti";
+import {Confetti} from "../Confetti.mjs";
 
 /**
  * Object Container
- * @type {{init: Container.init, createInput: Container.createInput, bigDiv: Container.bigDiv, createTitle: Container.createTitle, createClearBtn: Container.createClearBtn, createListContainer: Container.createListContainer}}
+ * @type {{init: Container.init, createInput: Container.createInput, createForm: Container.createForm, createContainer: (function(): HTMLDivElement), createTitle: Container.createTitle, createClearBtn: Container.createClearBtn, createListContainer: Container.createListContainer}}
  */
 export const Container = {
 
@@ -124,11 +124,11 @@ export const Container = {
 
             let list = document.querySelector('#containerList');
             let titleStore = document.querySelectorAll('.titleList').values();
-            localStorage.setItem('itemList',titleStore);
+            localStorage.setItem('itemStore',titleStore.toString());
             localStorage.clear();
             list.remove();
 
-            new confetti();
+            new Confetti();
             if (!timer) {
                 timer = 1;
                 timedCount();
@@ -137,7 +137,7 @@ export const Container = {
         }));
 
         /**
-         *  Animation ends when we dbclick on the btn
+         *  Animation ends when we dblclick on the btn
          * @type {Element}
          */
          btn.addEventListener("dblclick",()=> {
